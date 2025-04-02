@@ -12,6 +12,28 @@
             <li class="dropdown">
                 <a href="<?php echo BASE_URL; ?>association.php" class="nav-link"><i data-feather="box"></i><span>Association</span></a>
             </li>
+            <li class="menu-header">Employees</li>
+            <li class="dropdown">
+                <a href="<?php echo BASE_URL; ?>departments.php" class="nav-link"><i data-feather="briefcase"></i><span>Departments</span></a>
+            </li>
+            <li class="dropdown">
+                <a href="<?php echo BASE_URL; ?>employee_position.php" class="nav-link"><i data-feather="archive"></i><span>Position</span></a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                        data-feather="users"></i><span>Employees</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="add_employee.php">Add</a></li>
+                    <li><a class="nav-link" href="employees.php">Show</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="<?php echo BASE_URL; ?>retiring_employee.php" class="nav-link"><i data-feather="user-minus"></i><span>Retired Employee</span></a>
+            </li>
+            <li class="menu-header">Leave</li>
+            <li class="dropdown">
+                <a href="<?php echo BASE_URL; ?>employee_position.php" class="nav-link"><i data-feather="archive"></i><span>Leaves</span></a>
+            </li>
         </ul>
     </aside>
 </div>
