@@ -34,6 +34,14 @@
             <li class="dropdown">
                 <a href="<?php echo BASE_URL; ?>employee_position.php" class="nav-link"><i data-feather="archive"></i><span>Leaves</span></a>
             </li>
+            <li class="menu-header">Time Tracking</li>
+            <li class="dropdown">
+                <a href="<?php //echo BASE_URL; ?>#" class="nav-link"><i data-feather="clock"></i><span>Hours Settings</span></a>
+            </li>
+            <li class="dropdown">
+                <a href="<?php //echo BASE_URL; ?>#" class="nav-link"><i data-feather="info"></i><span>Check In/Check Out</span></a>
+            </li>
+            
         </ul>
     </aside>
 </div>

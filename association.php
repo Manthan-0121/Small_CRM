@@ -80,13 +80,13 @@ include("./includes/footer.php");
                     <div class="form-group">
                         <label>Section Name</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Section Name" name="txt_section_name" required>
+                            <input type="text" class="form-control" id="txt_section_name" placeholder="Section Name" name="txt_section_name" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Image</label>
                         <div class="input-group">
-                            <input type="file" class="form-control" name="fu_img" required>
+                            <input type="file" class="form-control" name="fu_img" id="fu_section_img" required>
                         </div>
                     </div>
                     <button type="button" id="btn_add" class="btn btn-primary waves-effect">Add</button>
@@ -95,3 +95,21 @@ include("./includes/footer.php");
         </div>
     </div>
 </div>
+
+
+<script>
+    $("#btn_add").click(function() {
+        var txt_section_name = $('#txt_section_name').val();
+        var file_data = $("#fu_section_img").prop("files")[0];
+        var form_data = new FormData();
+        form_data.append("file", file_data);
+        console,log(form_data);
+        $.ajax({
+            type: 'post',
+            url: "add_association.php",
+            dataType: 'json',
+            data: '' + name + '&useremail=' + email + '&message=' + message,
+            success: function() {}
+        });
+    });
+</script>
