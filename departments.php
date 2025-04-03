@@ -48,9 +48,9 @@ include("./includes/header.php");
                                         <button class="btn btn-primary edit-btn" data-id="<?php echo $row['id'] ?>" data-department_name="<?php echo htmlspecialchars($row['department_name']) ?>" data-status="<?php echo $row['department_status'] ?>">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </button>
-                                        <button class="btn btn-danger btn_del" data-id="<?php echo $row['id'] ?>">
+                                        <!-- <button class="btn btn-danger btn_del" data-id="<?php echo $row['id'] ?>">
                                             <i class="fa-solid fa-trash"></i>
-                                        </button>
+                                        </button> -->
                                     </td>
                                 </tr>
                             <?php
@@ -83,7 +83,7 @@ include("./includes/footer.php");
                     <div class="form-group">
                         <label>Departments</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="txt_department_name" placeholder="Section Name" name="txt_department_name" required>
+                            <input type="text" class="form-control" id="txt_department_name" placeholder="Enter Department Name" name="txt_department_name" required>
                             <div class="invalid-feedback">
                                 Department already exist
                             </div>
