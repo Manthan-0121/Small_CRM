@@ -15,7 +15,7 @@ Core Functionality
  
     3. Leave Management
         ->Manage Leave Types
-        ->Manage Employe Leave
+        ->Manage Employee Leave
  
     4. Time Tracking
         ->Check In/Check Out

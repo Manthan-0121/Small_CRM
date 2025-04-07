@@ -3,49 +3,81 @@ include("./includes/header.php");
 
 ?>
 
-<button type="button" class="mb-4 btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Departments</button>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4>Manage Departments</h4>
+                <h4>Manage Leave Application</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped" id="table-1">
                         <thead>
                             <tr>
-                                <th class="text-center">
-                                    #
-                                </th>
-                                <th>Departments Name</th>
+                                <th class="text-center">#</th>
+                                <th>Employee Name</th>
+                                <th>Leave Title</th>
+                                <th>Leave Type</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Total Days</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>About Company</td>
-                                <td>
-                                    <div class="pretty p-switch p-fill">
-                                        <input type="checkbox" />
-                                        <div class="state p-success">
-                                            <label>Enable</label>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-primary" type="button">
-                                        <i class="fa-solid fa-pen-to-square"></i> 
-                                    </a>
-                                    <a href="#" class="btn btn-danger" type="button">
-                                        <i class="fa-solid fa-trash"></i> 
-                                    </a>
-                                </td>
-                            </tr>
+                            <?php
+                            $selleaveinfosql = "SELECT tbl_employee.first_name AS emp_fname, tbl_employee.last_name AS emp_lname, tbl_leave_category.type AS leave_category_type, tbl_leave_info.leave_start_date AS leave_start_date, tbl_leave_info.leave_end_date AS leave_end_date, tbl_leave_info.leave_status AS leave_status, tbl_leave_info.leave_title AS leave_title, tbl_leave_info.id AS leave_id FROM tbl_leave_info JOIN tbl_employee ON tbl_leave_info.employee_id = tbl_employee.id JOIN tbl_leave_category ON tbl_leave_info.leave_category_id = tbl_leave_category.id";
+
+                            $selleaveinfores = mysqli_query($conn, $selleaveinfosql);
+                            $sqno = 1;
+                            while ($selleaveinforow = mysqli_fetch_array($selleaveinfores)) {
+                            ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $sqno++; ?>
+                                    </td>
+                                    <td><?php echo $selleaveinforow['emp_fname'] . " " . $selleaveinforow['emp_lname']; ?></td>
+                                    <td><?php echo $selleaveinforow['leave_title']; ?></td>
+                                    <td><?php echo $selleaveinforow['leave_category_type']; ?></td>
+                                    <td><?php echo date("d-m-Y", strtotime($selleaveinforow["leave_start_date"])); ?></td>
+                                    <td><?php echo date("d-m-Y", strtotime($selleaveinforow["leave_end_date"])); ?></td>
+                                    <td>
+                                        <?php
+                                        $date1 = new DateTime($selleaveinforow["leave_start_date"]);
+                                        $date2 = new DateTime($selleaveinforow["leave_end_date"]);
+                                        $days  = $date2->diff($date1)->format('%a');
+
+                                        if ($date1 == $date2) {
+                                            echo '1 Day';
+                                        } else {
+                                            echo $days . " Days";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        if ($selleaveinforow['leave_status'] == "1") {
+                                            echo "<span class=\"badge badge-success\">Approved</span>";
+                                        } elseif ($selleaveinforow['leave_status'] == "2") {
+                                            echo "<span class=\"badge badge-light\">Pending</span>";
+                                        } else {
+                                            echo "<span class=\"badge badge-danger\">Rejected</span>";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <a href="updt_leave_dtl.php?lv_id=<?php echo $selleaveinforow['leave_id']?>" class="btn btn-primary">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <!-- <a href="#" class="btn btn-danger" type="button">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a> -->
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -57,28 +89,3 @@ include("./includes/header.php");
 <?php
 include("./includes/footer.php");
 ?>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formModal">Add New Departments</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="add_form" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label>Departments</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Section Name" name="txt_section_name" required>
-                        </div>  
-                    </div>
-                    <button type="button" id="btn_add" class="btn btn-primary waves-effect">Add</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>

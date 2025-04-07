@@ -31,17 +31,30 @@
                 <a href="<?php echo BASE_URL; ?>retiring_employee.php" class="nav-link"><i data-feather="user-minus"></i><span>Retired Employee</span></a>
             </li>
             <li class="menu-header">Leave</li>
+            <!-- <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                        data-feather="users"></i><span>Leave </span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="add_employee.php">Add</a></li>
+                    <li><a class="nav-link" href="employees.php">Show</a></li>
+                </ul>
+            </li> -->
             <li class="dropdown">
-                <a href="<?php echo BASE_URL; ?>employee_position.php" class="nav-link"><i data-feather="archive"></i><span>Leaves</span></a>
+                <a href="<?php echo BASE_URL; ?>leave_category.php" class="nav-link"><i data-feather="archive"></i><span>Leave Category</span></a>
+            </li>
+            <li class="dropdown">
+                <a href="<?php echo BASE_URL; ?>leave_manage.php" class="nav-link"><i data-feather="archive"></i><span>Leaves</span></a>
             </li>
             <li class="menu-header">Time Tracking</li>
             <li class="dropdown">
-                <a href="<?php //echo BASE_URL; ?>#" class="nav-link"><i data-feather="clock"></i><span>Hours Settings</span></a>
+                <a href="<?php //echo BASE_URL; 
+                            ?>#" class="nav-link"><i data-feather="clock"></i><span>Hours Settings</span></a>
             </li>
             <li class="dropdown">
-                <a href="<?php //echo BASE_URL; ?>#" class="nav-link"><i data-feather="info"></i><span>Check In/Check Out</span></a>
+                <a href="<?php //echo BASE_URL; 
+                            ?>#" class="nav-link"><i data-feather="info"></i><span>Check In/Check Out</span></a>
             </li>
-            
+
         </ul>
     </aside>
 </div>
