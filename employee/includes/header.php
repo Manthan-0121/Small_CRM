@@ -21,7 +21,7 @@ $row = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/bundles/datatables/datatables.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="assets/bundles/pretty-checkbox/pretty-checkbox.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/bundles/pretty-checkbox/pretty-checkbox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/bundles/summernote/summernote-bs4.css">
     <!-- Custom style CSS -->

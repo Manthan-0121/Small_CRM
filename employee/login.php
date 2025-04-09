@@ -1,6 +1,10 @@
 <?php
 include("../includes/config.php");
 
+if(isset($_SESSION['u_id']) != null){
+    // header('Location: '.BASE_URL.'.php');
+    // exit();
+}
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $txt_email = mysqli_real_escape_string($conn,$_POST['txt_email']);
     $txt_pwd = mysqli_real_escape_string($conn,$_POST['txt_pwd']);

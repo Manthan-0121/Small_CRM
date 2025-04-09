@@ -4,4 +4,5 @@ include("../includes/config.php");
         header('Location: '.BASE_URL.'employee/login.php');
         exit();
     }
+
 ?>

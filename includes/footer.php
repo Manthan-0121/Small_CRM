@@ -18,7 +18,7 @@
 <script src="<?php echo BASE_URL; ?>assets/bundles/datatables/datatables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/bundles/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo BASE_URL; ?>assets/js/page/datatables.js"></script>
+<!-- <script src="<?php echo BASE_URL; ?>assets/js/page/datatables.js"></script> -->
 <script src="<?php echo BASE_URL; ?>assets/bundles/summernote/summernote-bs4.js"></script>
 <!-- Template JS File -->
 <script src="<?php echo BASE_URL; ?>assets/js/scripts.js"></script>

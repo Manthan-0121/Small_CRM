@@ -12,6 +12,7 @@ include("./includes/header.php");
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                    <!-- <table class="table table-striped" id="table-1"> -->
                     <table class="table table-striped" id="table-1">
                         <thead>
                             <tr>
@@ -45,10 +46,10 @@ include("./includes/header.php");
                                         $date2 = new DateTime($row["leave_end_date"]);
                                         $days  = $date2->diff($date1)->format('%a');
 
-                                        if($date1 == $date2){
+                                        if ($date1 == $date2) {
                                             echo '1 Day';
-                                        }else{
-                                            echo $days." Days";
+                                        } else {
+                                            echo ++$days . " Days";
                                         }
                                         ?>
                                     </td>
@@ -58,6 +59,8 @@ include("./includes/header.php");
                                             echo "<span class=\"badge badge-success\">Approved</span>";
                                         } elseif ($row['Leave_status'] == "2") {
                                             echo "<span class=\"badge badge-light\">Pending</span>";
+                                        } elseif ($row['Leave_status'] == "3") {
+                                            echo "<span class=\"badge badge-warning\">Cancel</span>";
                                         } else {
                                             echo "<span class=\"badge badge-danger\">Rejected</span>";
                                         }
@@ -91,7 +94,18 @@ include("./includes/footer.php");
             </div>
             <div class="modal-body">
                 <form id="add_form" enctype="multipart/form-data">
-                    <input type="hidden" name="data_emp_id" id="data_emp_id" value="<?php echo $_SESSION['emp_id'] ?>">
+                    <input type="hidden" name="data_emp_id" id="data_emp_id" value="<?php echo $_SESSION['emp_id']; ?>">
+                    <div class="form-group">
+                        <div class="pretty p-default p-curve p-toggle">
+                            <input type="checkbox" />
+                            <div class="state p-success p-on">
+                                <label>Paid</label>
+                            </div>
+                            <div class="state p-danger p-off">
+                                <label>Unpaid </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label>Title</label>
                         <div class="input-group">
@@ -128,9 +142,10 @@ include("./includes/footer.php");
                                 </div>
                             </dic>
                             <dic class="col-6">
-                                <label>End Date</label>
+                                <label>Total Day</label>
                                 <div class="input-group">
-                                    <input type="date" class="form-control" id="dt_end_date" name="dt_end_date" required>
+                                    <input type="number" class="form-control" min="0.5" max="6" step="0.5" id="tot_day" name="dt_end_date" required>
+
                                 </div>
                             </dic>
                         </div>
@@ -160,5 +175,41 @@ include("./includes/footer.php");
             });
             return false;
         });
+
+        
+        $('#dt_start_date').change(function() {
+            var dt_start_date = $(this).val();
+            var data_emp_id = $('#data_emp_id').val();
+            $.ajax({
+                type: "post",
+                url: '../ajax_files/chk_leave_date.php',
+                data: {dt_start_date:dt_start_date,data_emp_id:data_emp_id},
+                success: function(data){
+                    if(data == 1){
+                        console.log("date already exist");
+                    }else{
+                        console.log("date not exist");
+                    }
+                }
+            });
+        });
+
+        // $('#tot_day').keyup(function() {
+        //     var tot_day = $(this).val();
+        //     var start_date = $('#dt_start_date').val();
+        //     var old_date = new Date(start_date);
+        //     var new_date = new Date(old_date);
+        //     new_date.setDate(new_date.getDate() + tot_day);
+
+        //     var dd = new_date.getDate();
+        //     var mm = new_date.getMonth() + 1;
+        //     var y = new_date.getFullYear();
+        //     console.log(mm + '/' + dd + '/' + y);
+
+        //     // if(tot_day <= 1.5){
+
+        //     //     console.log()
+        //     // }
+        // });
     });
 </script>
